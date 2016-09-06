@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>关联式地区选择下拉框</title>
+
+<style type="text/css">
+h2 {
+	width:80%;
+	color:#404040;
+	font-size:14px;
+	padding:5px;
+	background:#F1F7F9;
+	border-bottom:1px solid #C9D7F1;
+}
+p { 
+	padding:5px;
+}
+label {
+	padding:5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 相关数据存在data.js之中 -->
+
+<h2>实例化对象创建 - 只有省</h2>
+<p id="pcd">
+	
+</p>
+
+<h2>实例化对象创建 - 只有省和市</h2>
+<p id="pce">
+	
+</p>
+<p>
+	<input type="button" value="获取值" onclick="alert(picker_2.getValue())" />	
+	<input type="button" value="获取文本" onclick="alert(picker_2.getText())" />	
+</p>
+<h2>实例化对象创建 - 省、市、区</h2>
+<p id="pcf">
+	
+</p>
+
+
+<h2>使用标签创建 - 无参数</h2>
+<p>
+	<AreaPicker name="picker_4"></AreaPicker>
+</p>
+<h2>使用标签创建 - 有参数</h2>
+<p>
+	<AreaPicker name="picker_5" level="3" value="3-8-120" width="200"></AreaPicker>
+</p>
+<p>
+	<input type="button" value="获取值" onclick="alert(picker_5.getValue())" />	
+	<input type="button" value="获取文本" onclick="alert(picker_5.getText())" />	
+</p>
+
+<script type="text/javascript" src="scripts/data.js"></script>
+<script type="text/javascript" src="scripts/picker.js"></script>
+<script type="text/javascript">
+
+var container = null;
+container = document.getElementById("pcd");
+var picker_1 = new AreaPicker(container ,"AreaPicker_1" ,1).init().bind();
+
+container = document.getElementById("pce");
+var picker_2 = new AreaPicker(container ,"AreaPicker_2" ,2);
+picker_2.init().bind();
+
+container = document.getElementById("pcf");
+var picker_3 = new AreaPicker(container ,"AreaPicker_2" ,3);
+picker_3.init();
+picker_3.bind();
+
+</script>
+
+</body>
+</html>
