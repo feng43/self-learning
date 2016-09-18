@@ -12,10 +12,12 @@
 		var titleInit = document.title;
 		var isShine = true;
 
+		//最开始的最low的版本使用settimeout来实现文字闪烁
 		setInterval(function() {
 		    var title = document.title;
 		    if (isShine == true) {
-		    	//判断title中是否有新这个字
+		    	//判断title中是否有新这个字 
+		    	//.test  正则测试
 		        if (/新/.test(title) == false) {
 		            document.title = '[你有新消息]';    
 		        } else {
@@ -26,9 +28,12 @@
 		    }
 		}, 500);
 
+		//window.onfocus 聚焦事件
 		window.onfocus = function() {
 		    isShine = false;
 		};
+
+		//window.onfocus 离焦事件
 		window.onblur = function() {
 		    isShine = true;
 		};
