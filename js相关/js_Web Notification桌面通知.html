@@ -5,10 +5,12 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 </head>
 <body>
-	
+	<button id="button">点一下试试</button>
+	<p id="text"></p>
+
 
 	<script>
-	//
+	//原始方法，
 		var titleInit = document.title;
 		var isShine = true;
 
@@ -37,6 +39,48 @@
 		window.onblur = function() {
 		    isShine = true;
 		};
+
+
+
+
+	//Notification，新方法,仅仅限制在chrome下测试，其他浏览器可能存在兼容性问题
+	if (window.Notification) {
+	    var button = document.getElementById('button');
+	    var text = document.getElementById('text');
+	    
+	    var popNotice = function() {
+	    	//判断用户是否允许Notification弹窗，
+	    	//静态属性Notification.permission可以查看用户是否允许Notification，granted表示允许，denied表示不允许，default表示用户没有选择
+	        if (Notification.permission == "granted") {
+	        	//初始化一个新的弹窗，new Notification(title, options)，title不能为空~
+	            var notification = new Notification("Hi，~~：", {
+	                body: '超级无敌小峰峰？'
+	            });
+	            
+	            //点击通知之后触发的事件
+	            notification.onclick = function() {
+	                text.innerHTML = '我就是试一试' + new Date().toTimeString().split(' ')[0] + '这个时间对不对！';
+
+	                //通知关闭事件
+	                //Notification.onclose，关闭触发事件
+	                notification.close();    
+	            };
+	        }    
+	    };
+	    
+	    button.onclick = function() {
+	        if (Notification.permission == "granted") {
+	            popNotice();
+	        } else if (Notification.permission != "denied") {
+	        	//Notification.requestPermission()静态方法，让浏览器出现用户是否允许弹窗
+	            Notification.requestPermission(function (permission) {
+	              popNotice();
+	            });
+	        }
+	    };
+	} else {
+	    alert('浏览器不支持Notification');    
+	};
 	</script>
 </body>
 </html>
