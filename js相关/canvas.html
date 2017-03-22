@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+	<script type="text/javascript">
+		window.addEventListener("load",eventWindowLoaded);
+		function eventWindowLoaded(){
+			canvasApp();
+		};
+		function canvasApp(){
+			var myCanvas = document.getElementById("myCanvas");
+			if(!myCanvas || !myCanvas.getContext){
+				return;
+			};
+			var ctx = myCanvas.getContext("2d");
+			/*ctx.fillStyle = "#f36";
+			ctx.fillRect(0,0,200,200);*/
+			myCanvas.height = window.innerHeight;
+			myCanvas.width = window.innerWidth;
+
+			function drawScreen(){
+				//原点
+				var x = 0;
+				var y = 0;
+
+				//两条线之间距离
+				var dx = 50;
+				var dy = 50;
+
+				//终点
+				var wx = myCanvas.height;
+				var wy = myCanvas.width;
+
+				//显示的长度
+				var showxy = 10;
+
+				ctx.lineWith = 1;
+				while(x < wx){
+					x = x + dx;
+					ctx.moveTo(x,y);
+					ctx.lineTo(x,wy);
+					ctx.stroke();
+
+					//坐标数字
+					ctx.font = "1px	Microsoft YaHei";
+					//ctx.font = "1px	Calibri";
+					ctx.fillText(showxy,x,10);
+					showxy += 10;
+				}
+
+				x = 0;
+				showxy = 10;
+				while(y < wy){
+					y = y + dy;
+					ctx.moveTo(x,y);
+					ctx.lineTo(wx,y);
+					ctx.stroke();
+
+					ctx.font = "1px	Calibri";
+					ctx.fillText(showxy,x,y);
+					showxy += 10;
+				}
+			}
+
+			drawScreen();
+		}
+
+	</script>
+</body>
+</html>
