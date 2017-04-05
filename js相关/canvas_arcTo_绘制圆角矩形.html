@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+	<script type="text/javascript">
+		window.addEventListener("load",eventWindowLoaded);
+		function eventWindowLoaded(){
+			canvasApp();
+		};
+		/*ctx：Canvas画布绘图环境
+		x,y：左上角
+		width：矩形宽度
+		height：矩形高度
+		r：矩形圆角半径
+		fill： 绘制一个填充的矩形
+		stroke：绘制一个边框矩形*/
+		function drawRoundedRect(ctx, x, y, width, height, r, fill, stroke) { 
+			ctx.save();
+			ctx.beginPath();
+			ctx.moveTo(x + r, y);
+
+			ctx.arcTo(x + width, y, x + width, y + r, r);
+
+			ctx.arcTo(x + width, y + height, x + width - r, y + height, r);
+
+			ctx.arcTo(x, y + height, x, y + height - r, r);
+
+			ctx.arcTo(x, y, x + r, y, r);
+
+			if (fill) {
+				ctx.fill();
+			}
+			if (stroke) {
+				ctx.stroke();
+			}
+			ctx.restore();
+		};
+		function canvasApp(){
+			var myCanvas = document.getElementById("myCanvas");
+			if(!myCanvas || !myCanvas.getContext){
+				return;
+			};
+			var ctx = myCanvas.getContext("2d");
+			/*ctx.fillRect(0,0,200,200);*/
+			myCanvas.height = window.innerHeight;
+			myCanvas.width = window.innerWidth;
+
+			function drawScreen(){
+				ctx.strokeStyle = 'rgb(150,0,0)';
+				ctx.fillStyle = 'rbg(0,150,0)';
+				ctx.lineWidth = 10;
+				drawRoundedRect(ctx,30,50,200,220,20,true,true);
+			}
+
+			drawScreen();
+		}
+	</script>
+</body>
+</html>
+

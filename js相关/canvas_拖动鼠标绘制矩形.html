@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+	<script type="text/javascript">
+		window.addEventListener("load",eventWindowLoaded);
+		function eventWindowLoaded(){
+			canvasApp();
+		};
+		function canvasApp(){
+			var myCanvas = document.getElementById("myCanvas");
+			if(!myCanvas || !myCanvas.getContext){
+				return;
+			};
+			var ctx = myCanvas.getContext("2d");
+			/*ctx.fillRect(0,0,200,200);*/
+			myCanvas.height = window.innerHeight;
+			myCanvas.width = window.innerWidth;
+
+			function drawScreen(){
+				ctx.fillStyle = "#f36";
+				myCanvas.addEventListener('mousedown', mouseDown, false);
+				myCanvas.addEventListener('mouseup', mouseUp, false);
+				myCanvas.addEventListener('mousemove', mouseMove, false);
+
+				var rect = {};
+				var drag = false;
+
+				function mouseDown(e){
+					rect.startX = e.pageX - this.offsetLeft;
+					rect.startY = e.pageY - this.offsetTop;
+					drag = true;
+				}
+
+				function mouseUp(){
+					drag = false;
+				}
+
+				function mouseMove(e){
+					if(drag){
+						rect.w = (e.pageX - this.offsetLeft) - rect.startX;
+						rect.h = (e.pageY - this.offsetTop) - rect.startY;
+						//先width,再height
+						ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+						drawRect("fill");
+					}
+				}
+
+				function drawRect(style){
+					if(style == "fill"){
+						ctx.fillRect(rect.startX,rect.startY,rect.w,rect.h);
+					} else {
+						ctx.strokeRect(rect.startX,rect.startY,rect.w,rect.h);
+					};
+				}
+			}
+
+			drawScreen();
+		}
+
+		/*function drawRoundedRect(ctx, x, y, width, height, r, fill, stroke) { 
+			ctx.save();
+			ctx.beginPath();
+			ctx.moveTo(x + r, y);
+
+			ctx.arcTo(x + width, y, x + width, y + r, r);
+
+			ctx.arcTo(x + width, y + height, x + width - r, y + height, r);
+
+			ctx.arcTo(x, y + height, x, y + height - r, r);
+
+			ctx.arcTo(x, y, x + r, y, r);
+
+			if (fill) {
+				ctx.fill();
+			}
+			if (stroke) {
+				ctx.stroke();
+			}
+			ctx.restore();
+		}*/
+
+	</script>
+</body>
+</html>
+

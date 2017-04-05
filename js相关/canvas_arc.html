@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+	<script type="text/javascript">
+		window.addEventListener("load",eventWindowLoaded);
+		function eventWindowLoaded(){
+			canvasApp();
+		};
+
+		/*弧度角度之间转换
+		rad = (Math.PI * deg) / 180
+		deg = (rad * 180) / Math.PI*/
+		function getRads(degrees){
+			return (Math.PI * degrees) / 180;
+		};
+
+		function getDegrees(rads){
+			return (rads * 180) / Math.PI;
+		};
+
+		function canvasApp(){
+			var myCanvas = document.getElementById("myCanvas");
+			if(!myCanvas || !myCanvas.getContext){
+				return;
+			};
+			var ctx = myCanvas.getContext("2d");
+			/*ctx.fillRect(0,0,200,200);*/
+			myCanvas.height = window.innerHeight;
+			myCanvas.width = window.innerWidth;
+
+			function drawScreen(){
+				var arc = {
+					x : myCanvas.width / 2,
+					y : myCanvas.height / 2,
+					r : 10
+				};
+				var w = myCanvas.width;
+				var h = myCanvas.height;
+				ctx.save();//保存现在的配置
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = '#e3f';
+				for(var i = 0; i < 10; i++){
+					ctx.beginPath();
+					ctx.arc(arc.x,arc.y,arc.r*i,getRads(-45),getRads(45));
+					ctx.stroke();
+
+					ctx.beginPath();
+					ctx.arc(arc.x,arc.y,arc.r*i,getRads(-135),getRads(135), true);
+					ctx.stroke();
+				};
+			}
+
+			drawScreen();
+
+		}
+
+	</script>
+</body>
+</html>
