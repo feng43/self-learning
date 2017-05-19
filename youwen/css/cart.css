@@ -1,0 +1,69 @@
+body{
+	background: #F8F8F8;
+}
+.allProductPanel{
+	background: #FFF;
+}
+.allProductPanel div img{
+	width: 8em;
+}
+.allProductPanel p span:last-child{
+	font-size: 1.3em;
+}
+.allProductPanel p span:first-child{
+	font-size: 1.4em;
+}
+.singleProductPanel{
+	padding: 1em;
+}
+.operation{
+	bottom: 1em;
+	right: 1em;
+	height: 30px;
+	line-height:30px;
+}
+.operation .cartNum{
+	width: 28%;
+    height: 80%;
+}
+.chooseCart{
+	background: url(../img/shop_n.png) no-repeat;
+    width: 2em;
+    height: 2em;
+    background-size: 100% 100%;
+}
+.chooseCart.active{
+	background: url(../img/shop_s.png) no-repeat;
+	background-size: 100% 100%;
+}
+.payPanel{
+	display: table;
+	height: 45px;
+	line-height: 45px;
+	background: #FFF;
+	position: fixed;
+	bottom: 0px;
+}
+.payPanel .chooseCart{
+	width: 1.5em;
+    height: 1.5em;
+}
+.payPanel div span:nth-child(2){
+	color: #FE4F01;
+}
+.payBtn{
+	height: 45px;
+    outline: none;
+    background: #E75152;
+    color: #FFF;
+}
+
+/* orderList */
+.userInfoPanel{
+	background: #FFF;
+}
+.userInfoPanel div img{
+	position: absolute;
+    top: 30%;
+    right: -20%;
+}

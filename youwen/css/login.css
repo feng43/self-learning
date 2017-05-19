@@ -1,0 +1,48 @@
+.loginPanel{
+    right: 15%;
+    top: 8em;
+    left: 15%;
+    z-index: 10;
+    padding-bottom: 20px;
+    color: #000;
+}
+.loginInput{
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border-color: #090909;
+}
+.loginBtn{
+	height: 40px;
+    border-radius: 20px;
+    outline: none;
+	border: none;
+    background: #231815;
+    color: #fff;
+}
+.loginPanel span:after{
+	content:"";
+	height: 1px;
+    width: 20%;
+    background: #000;
+    display: inline-block;
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 45px;
+}
+.loginPanel span:before{
+	content:"";
+	height: 1px;
+    width: 20%;
+    background: #000;
+    display: inline-block;
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    right: 45px;
+}
+.logoImg{
+	right: 30%;
+    bottom: 1em;
+}

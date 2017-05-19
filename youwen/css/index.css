@@ -1,0 +1,24 @@
+.caption{
+    right: 15%;
+    bottom: 4em;
+    left: 15%;
+    z-index: 10;
+    padding-bottom: 20px;
+    color: #FFF;
+}
+.content{
+	background-color: #F3E6DE;
+}
+.subTitle{
+	color: #999;
+}
+.btnBuy{
+	height: 30px;
+    width: 75px;
+    text-align: center;
+    background: #251A17;
+    color: #FFF;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
