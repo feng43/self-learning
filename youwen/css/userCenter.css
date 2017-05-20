@@ -24,4 +24,11 @@ body{
 }
 .userOperationPanel div div{
 	background: #F8F8F8;
+	border-radius: 5px;
+}
+.accountPanel, .orderPanel, .userInfoPanel{
+	background: #FFF;
+}
+.userInfoPanel span:last-child{
+	color: #999;
 }

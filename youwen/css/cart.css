@@ -67,3 +67,50 @@ body{
     top: 30%;
     right: -20%;
 }
+
+/*myOrder*/
+.orderBtnPanel button{
+	left: 50%;
+	width: 65px;
+}
+.orderBtnPanel button:first-child{
+	border: 1px solid #333;
+    background: #fff;
+    color: #333;
+}
+.orderBtnPanel button:last-child{
+	border: 1px solid #CA2C2C;
+    background: #fff;
+    color: #CA2C2C;
+}
+.orderPanel{
+	background: #FFF;
+}
+.orderPanel div img{
+	width: 8em;
+}
+.orderPanel p span:last-child{
+	font-size: 1.3em;
+}
+.orderPanel p span:first-child{
+	font-size: 1.4em;
+}
+.orderSubPanel, .orderBtnPanel{
+	padding: 1em 0;
+}
+.orderPanel{
+	padding: 0 1em;
+}
+.orderPanel .operation{
+	height: 105px;
+	line-height: 50px;
+}
+.orderPanel .operation span:first-child{
+	color: #D92525;
+}
+.orderIcon{
+	width: 10px !important;
+	top: 50%;
+    right: 0;
+}
+
