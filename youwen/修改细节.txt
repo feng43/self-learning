@@ -1,0 +1,187 @@
+通用标题
+<div class="pct100 pr10 pl10 header mainHeader">
+	<p class="tc">
+		<img src="img/icon_meduim.png" alt="" class="fl mt5 w20">
+		<span class="f18">UWILLING 囿文美丽汇</span>
+		<img src="img/icon_shop.png" alt="" class="fr mt5 w25">
+	</p>
+</div>
+<div class="pct100 pr10 pl10 bbc rel header subHeader">
+	<p class="tc">
+		<img src="img/icon_back.png" alt="" class="fl mt5 w10">
+		<span class="f18">登陆</span>
+	</p>
+</div>
+
+login.html
+<button class="f16 mb20 auto db cf loginBtn" style="width:85%">登录</button>
+
+login.css
+.loginBtn{
+	height: 46px;
+    border-radius: 20px;
+    outline: none;
+	border: none;
+    background: #231815;
+}
+
+productList.html
+<div class="allListContent">
+	<div class="pct50 mr-4 dib vt listContent">
+		<img src="img/12.png" alt="" class="pct100">
+		<div class="listContentDetail p10 bx" style="height: 150px;">
+			<p class="f16">Uwilling 缠丝面膜系列</p>
+			<span class="c9 db" style="margin-top: 3px;height: 40px;">肌肤的水润新衣肌肤的水润新衣肌肤的水润新衣</span>
+			<div class="mt10">
+				<span class="f22">￥98</span>
+			</div>
+		</div>
+	</div>
+	<div class="pct50 mr-4 dib vt listContent">
+		<img src="img/12.png" alt="" class="pct100">
+		<div class="listContentDetail p10 bx" style="height: 150px;">
+			<p class="f16">Uwilling 缠丝面膜系列</p>
+			<span class="c9 db" style="margin-top: 3px;height: 40px;">肌肤的水润新衣</span>
+			<div class="mt10">
+				<span class="f22">￥98</span>
+			</div>
+		</div>
+	</div>
+	<div class="pct50 mr-4 dib vt listContent">
+		<img src="img/12.png" alt="" class="pct100">
+		<div class="listContentDetail p10 bx" style="height: 150px;">
+			<p class="f16">Uwilling 缠丝面膜系列</p>
+			<span class="c9 db" style="margin-top: 3px;height: 40px;">肌肤的水润新衣</span>
+			<div class="mt10">
+				<span class="f22">￥98</span>
+			</div>
+		</div>
+	</div>
+	<div class="pct50 mr-4 dib vt listContent">
+		<img src="img/12.png" alt="" class="pct100">
+		<div class="listContentDetail p10 bx" style="height: 150px;">
+			<p class="f16">Uwilling 缠丝面膜系列</p>
+			<span class="c9 db" style="margin-top: 3px;height: 40px;">肌肤的水润新衣</span>
+			<div class="mt10">
+				<span class="f22">￥98</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+style.css
+/* productList */
+.allListContent .listContent img{
+    background-color: #d9d8da;
+}
+.allListContent .listContent:nth-child(3n+1) img{
+    background-color: #e6dfd9;
+}
+
+productDetail.html
+<div class="pct100 mb20 bcf">
+	<img src="img/prduct.png" alt="" class="pct100">
+	<div class="p20">
+		<h1 class="f20 mb5">UWILLING 蚕丝面膜</h1>
+		<span class="c9 mb10 db f15">细腻至2000目的镜面隔离,全面保护肌肤</span>
+		<span class="f20 cred mb20 db">￥&nbsp;288</span>
+		<p class="c9 tc">
+			<span class="fl">卖家佣金：12.2</span>
+			<span>库存：900</span>
+			<span class="fr">销量：1248</span>
+		</p>
+	</div>
+</div>
+
+index.html
+去掉
+TINY.box.show({html:"登录成功！",animate:false,close:false,mask:false,boxid:'success',autohide:3,top:'150'});
+
+userCenter.html
+<div class="bx pct100 pt20 pb20 pr20 mt20 f18 b bcf accountPanel">
+	<span class="pl20">我的伙伴</span>
+	<img src="img/icon_right.png" alt="" class="w10 fr">
+	<span class="fr mr15 n">75</span>
+</div>
+
+userInfo.html
+<div class="bcf">
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">姓名</span>
+		<span class="fr c9">孙文博</span>
+	</div>
+
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">专属二维码</span>
+		<img src="img/icon_right.png" alt="" class="w10 fr">
+	</div>
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" id="demo" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">推广合作伙伴</span>
+		<img src="img/icon_right.png" alt="" class="w10 fr">
+	</div>
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">推广会员</span>
+		<img src="img/icon_right.png" alt="" class="w10 fr">
+	</div>
+
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">手机号</span>
+		<span class="fr c9">1343833150124</span>
+	</div>
+
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">QQ号</span>
+		<span class="fr c9">1343833150124</span>
+	</div>
+
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">邮箱</span>
+		<span class="fr c9">513532@163.com</span>
+	</div>
+
+	<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+		<span class="">具体地址</span>
+		<span class="fr pct50 dib c9">河北省邯郸市乐亭县河北省邯郸市乐亭县</span>
+	</div>
+</div>
+
+shareImg.html,shareImg2.html
+<div class="pct100 pl20 bx bcf btc shareBtnPanel">
+	<div class="dib">
+		<span class="f18 dib mr10 ml10">￥1980</span>
+	</div>
+	<button class="pct30 tc f18 bn fr cf goRegisterBtn">立即加入</button>
+</div>
+share.css
+.goRegisterBtn{
+	height: 50px;
+    background: #231815;
+}
+.shareBtnPanel{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 104;
+	height: 50px;
+    line-height: 50px;
+}
+
+addAddress.html
+<div class="pct80 mt15 registerPanel">
+    <label class="db c9 f16 mb5">收货人</label>
+    <input type="text" placeholder="收货人" class="f16 pl15 c0"></input>
+</div>
+<div class="pct80 mt15 registerPanel">
+    <label class="db c9 f16 mb5">手机号</label>
+    <input type="text" placeholder="手机号" class="f16 pl15 c0"></input>
+</div>
+<div class="pct80 mt15 registerPanel">
+    <label class="db c9 f16 mb5">收货地址</label>
+    <input type="text" placeholder="收货地址" class="f16 pl15 c0"></input>
+</div>
+
+cart.html,cart.css
+有较大改动，详情见页面
+
+productDetail.html
+增加加入购物车成功弹窗

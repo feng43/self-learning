@@ -1,9 +1,6 @@
 .registerPanel {
     margin-left: 10%;
 }
-.registerPanel label {
-    color: #999;
-}
 .registerPanel .verificationCode {
     width: 55%;
 }
@@ -11,19 +8,14 @@
     height: 30px;
     width: 95%;
     border: 1px solid #CBCBCB;
-    color: #000;
 }
 .verificationCodeBtn {
     height: 30px;
     width: 85px;
-    background: #fff;
-    border: 1px solid #4090E5;
-    color: #4090E5;
+    border: 1px solid #332826;
+    color: #332826;
 }
-.sregisterNextBtn{
+.sregisterNextBtn, .addAddressBtn{
     height: 50px;
     background: #231815;
-    border: 0;
-    color: #fff;
-    border-radius: 5px;
 }

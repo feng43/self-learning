@@ -11,9 +11,11 @@
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/userCenter.css" rel="stylesheet">
+    <link href="css/share.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="bcf8">
+	<div class="bg"></div>
 	<div class="pct100 pr10 pl10 header mainHeader">
 		<p class="tc">
 			<img src="img/icon_meduim.png" alt="" class="fl mt5 w20">
@@ -29,35 +31,70 @@
 	</div>
 
 
-	<div class="bx pct100 pt20 pb20 pr20 bbc f18 b ovh userInfoPanel">
-		<span class="pl20">姓名</span>
-		<span class="fr">孙文博</span>
+	<div class="bcf">
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">姓名</span>
+			<span class="fr c9">孙文博</span>
+		</div>
+
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">专属二维码</span>
+			<img src="img/icon_right.png" alt="" class="w10 fr">
+		</div>
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" id="demo" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">推广合作伙伴</span>
+			<img src="img/icon_right.png" alt="" class="w10 fr">
+		</div>
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">推广会员</span>
+			<img src="img/icon_right.png" alt="" class="w10 fr">
+		</div>
+
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">手机号</span>
+			<span class="fr c9">1343833150124</span>
+		</div>
+
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">QQ号</span>
+			<span class="fr c9">1343833150124</span>
+		</div>
+
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">邮箱</span>
+			<span class="fr c9">513532@163.com</span>
+		</div>
+
+		<div class="bx pct90 pt15 pb15 f18 b ovh bcf userInfoPanel" style="margin: 0 5%; border-bottom:1px solid #E5E5E5;">
+			<span class="">具体地址</span>
+			<span class="fr pct50 dib c9">河北省邯郸市乐亭县河北省邯郸市乐亭县</span>
+		</div>
 	</div>
 
-	<div class="bx pct100 pt20 pb20 pr20 bbc f18 b ovh userInfoPanel">
-		<span class="pl20">专属二维码</span>
-		<img src="img/icon_right.png" alt="" class="w10 fr">
-	</div>
 
-	<div class="bx pct100 pt20 pb20 pr20 bbc f18 b ovh userInfoPanel">
-		<span class="pl20">手机号</span>
-		<span class="fr">1343833200124</span>
-	</div>
-
-	<div class="bx pct100 pt20 pb20 pr20 bbc f18 b ovh userInfoPanel">
-		<span class="pl20">QQ号</span>
-		<span class="fr">1343833200124</span>
-	</div>
-
-	<div class="bx pct100 pt20 pb20 pr20 bbc f18 b ovh userInfoPanel">
-		<span class="pl20">邮箱</span>
-		<span class="fr">513532@163.com</span>
-	</div>
-
-	<div class="bx pct100 pt20 pb20 pr20 bbc f18 b ovh userInfoPanel">
-		<span class="pl20">具体地址</span>
-		<span class="fr pct50 dib">河北省邯郸市乐亭县河北省邯郸市乐亭县</span>
+	<div class="pct100 tc bx pt20 pb20 bcf8 sharePanel">
+		<p>分享给</p>
+		<img src="img/login_wx.png" alt="" class="mt20 mb20">
+		<p>微信好友</p>
+		<div class="mt20 mb20 gap"></div>
+		<div class="cancel">
+			<span>取消</span>
+		</div>
 	</div>
 </body>
+<script>
+	document.getElementById("demo").onclick = function(){
+		document.querySelector(".sharePanel").style.display = "block";
+		document.querySelector(".bg").style.display = "block";
+		setTimeout(function(){
+			document.querySelector(".sharePanel").style.height="240px";
+		},5);
+	};
+	document.querySelector(".cancel").onclick = function(){
+		document.querySelector(".sharePanel").style.height="0px";
+		document.querySelector(".bg").style.display = "none";
+		document.querySelector(".sharePanel").style.display = "none";
+	};
+</script>
 
 </html>

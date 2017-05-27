@@ -1,0 +1,25 @@
+.sharePanel{
+	height: 0px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 104;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display: none;
+	transition: all .2s linear;
+}
+.gap{
+	height: 10px;
+    background-color: rgba(0,0,0,.5);
+}
+.goRegisterBtn{
+	height: 30px;
+    background: #231815;
+}
+.shareBtnPanel{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 104;
+}

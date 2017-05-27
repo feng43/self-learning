@@ -14,21 +14,48 @@
 
 </head>
 <body>
+	<div class="bg"></div>
+	<div class="menu bx pt20 pl10 cf">
+		<div>
+			<img src="img/img_head_n.png" alt="" class="w50 vm">
+			<span class="f18 ml10">登录</span>
+		</div>
+		<div class="mt50">
+			<img src="img/icon_home.png" alt="" class="w20 vtb">
+			<span class="f16 ml10">首页</span>
+		</div>
+		<div class="mt20">
+			<img src="img/icon_Uwilling.png" alt="" class="w20 vtb">
+			<span class="f16 ml10">Uwilling</span>
+		</div>
+		<div class="mt20">
+			<img src="img/icon_mb.png" alt="" class="w10 h20 vtb pl5">
+			<span class="f16 ml15">美宝</span>
+		</div>
+		<div class="mt20">
+			<img src="img/icon_me.png" alt="" class="w20 vtb">
+			<span class="f16 ml10">个人中心</span>
+		</div>
+		<div class="mt20 abs">
+			<img src="img/icon_out.png" alt="" class="w20 vtb">
+			<span class="f16 ml10">退出登录</span>
+		</div>
+	</div>
 	<div class="pct100 pr10 pl10 header mainHeader">
 		<p class="tc">
-			<img src="img/icon_meduim.png" alt="" class="fl mt5 w20">
+			<img src="img/icon_meduim.png" alt="" class="fl mt5 w20" id="demo">
 			<span>UWILLIMG 囿文美丽汇</span>
 			<img src="img/icon_shop.png" alt="" class="fr mt5 w25">
 		</p>
 	</div>
-	<div class="rel mb30">
+	<div class="rel mb10">
 		<img src="img/banner.png" alt="" class="pct100">
 		<div class="abs tc caption">
 			<h4 class="f24 mb20">你的隔离霜会呼吸嘛</h4>
 			<p class="f18">忽而今夏 </p>
 		</div>
 	</div>
-	<div class="pct90 auto mb20 content">
+	<div class="auto mb10 content" style="width:95%;">
 		<img src="img/prduct.png" alt="" class="pct100">
 		<div class="contentDetail p15">
 			<p class="f16">Uwilling 缠丝面膜系列</p>
@@ -39,7 +66,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="pct90 auto mb20 content">
+	<div class="auto mb10 content" style="width:95%;">
 		<img src="img/prduct.png" alt="" class="pct100">
 		<div class="contentDetail p15">
 			<p class="f16">Uwilling 缠丝面膜系列</p>
@@ -51,5 +78,20 @@
 		</div>
 	</div>
 </body>
-
+<script>
+	document.getElementById("demo").onclick = function(){
+		document.querySelector(".menu").style.display = "block";
+		document.querySelector(".bg").style.display = "block";
+		setTimeout(function(){
+			document.querySelector(".menu").style.width="150px";
+		},5);
+	};
+	document.querySelector(".bg").onclick = function(){
+		document.querySelector(".menu").style.width="0px";
+		setTimeout(function(){
+			document.querySelector(".bg").style.display = "none";
+			document.querySelector(".menu").style.display = "none";
+		},201);
+	}
+</script>
 </html>

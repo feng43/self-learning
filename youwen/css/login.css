@@ -3,8 +3,6 @@
     top: 8em;
     left: 15%;
     z-index: 10;
-    padding-bottom: 20px;
-    color: #000;
 }
 .loginInput{
     height: 40px;
@@ -13,12 +11,11 @@
     border-color: #090909;
 }
 .loginBtn{
-	height: 40px;
+	height: 46px;
     border-radius: 20px;
     outline: none;
 	border: none;
     background: #231815;
-    color: #fff;
 }
 .loginPanel span:after{
 	content:"";

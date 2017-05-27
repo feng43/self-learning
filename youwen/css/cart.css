@@ -1,11 +1,6 @@
-body{
-	background: #F8F8F8;
-}
-.allProductPanel{
-	background: #FFF;
-}
 .allProductPanel div img{
 	width: 8em;
+	background-color: #e6dfd9;
 }
 .allProductPanel p span:last-child{
 	font-size: 1.3em;
@@ -15,6 +10,12 @@ body{
 }
 .singleProductPanel{
 	padding: 1em;
+}
+.delPanel{
+    top: 1.6em;
+    right: 1em;
+    font-size: 1.2em;
+    color: #E75151;
 }
 .operation{
 	bottom: 1em;
@@ -39,10 +40,9 @@ body{
 .payPanel{
 	display: table;
 	height: 45px;
-	line-height: 45px;
-	background: #FFF;
 	position: fixed;
 	bottom: 0px;
+	line-height: 45px;
 }
 .payPanel .chooseCart{
 	width: 1.5em;
@@ -55,36 +55,29 @@ body{
 	height: 45px;
     outline: none;
     background: #E75152;
-    color: #FFF;
 }
 
 /* orderList */
-.userInfoPanel{
-	background: #FFF;
-}
 .userInfoPanel div img{
-	position: absolute;
     top: 30%;
     right: -20%;
 }
 
 /*myOrder*/
 .orderBtnPanel button{
-	left: 50%;
-	width: 65px;
+    left: 50%;
+    width: 80px;
+    height: 30px;
 }
 .orderBtnPanel button:first-child{
 	border: 1px solid #333;
-    background: #fff;
+    background: #FFF;
     color: #333;
 }
 .orderBtnPanel button:last-child{
 	border: 1px solid #CA2C2C;
-    background: #fff;
+    background: #FFF;
     color: #CA2C2C;
-}
-.orderPanel{
-	background: #FFF;
 }
 .orderPanel div img{
 	width: 8em;
@@ -114,3 +107,44 @@ body{
     right: 0;
 }
 
+/* productDetail */
+.addCartBtn{
+	background-color: #231816;
+	width: 300px;
+	height: 45px;
+    outline: none;
+}
+.successPanel{
+	position: fixed;
+	top: 30%;
+	left: 10%;
+	display: none;
+	z-index: 110;
+}
+.successPanel button{
+	height: 30px;
+    border: 1px solid #000;
+}
+
+/* manageAdress */
+.addressPanel{
+	padding: 0 1em;
+}
+.addressPanel div img{
+	width: 8em;
+}
+.addressPanel p span{
+	font-size: 1.3em;
+}
+.addressSubPanel{
+	padding: 1em 0;
+}
+
+/* manageAddress */
+.addAddressBtn{
+	height: 50px;
+    background: #231815;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+}

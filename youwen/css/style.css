@@ -11,6 +11,8 @@
 .h20{height:20px;}
 .h22{height:22px;}
 .h24{height:24px;}
+.h25{height:25px;}
+.h45{height:45px;}
 /* width */
 /* fixed width value */
 .w10{width:10px;}
@@ -60,6 +62,7 @@
 .lh20{line-height:20px;}
 .lh22{line-height:22px;}
 .lh24{line-height:24px;}
+.lh40{line-height:40px;}
 /* margin */
 .m0{margin:0;}
 .ml1{margin-left:1px;}
@@ -106,6 +109,10 @@
 .mr-4{margin-right:-4px;}
 .mt-4{margin-top:-4px;}
 .mb-4{margin-bottom:-4px;}
+.ml-5{margin-left:-5px;}
+.mr-5{margin-right:-5px;}
+.mt-5{margin-top:-5px;}
+.mb-5{margin-bottom:-5px;}
 .ml-20{margin-left:-20px;}
 .mr-20{margin-right:-20px;}
 .mt-20{margin-top:-20px;}
@@ -151,6 +158,16 @@
 .pt30{padding-top:30px;}
 .pr30{padding-right:30px;}
 .pb30{padding-bottom:30px;}
+.p50{padding:50px;}
+.pl50{padding-left:50px;}
+.pt50{padding-top:50px;}
+.pr50{padding-right:50px;}
+.pb50{padding-bottom:50px;}
+.p80{padding:80px;}
+.pl80{padding-left:80px;}
+.pt80{padding-top:80px;}
+.pr80{padding-right:80px;}
+.pb80{padding-bottom:80px;}
 /* border-color name rule: border(b)-position(l/r/t/b/d)-width(null/2)-style(null/sh)-color(first one letter/first two letter) |-> All colors are safe color*/
 .bdc{border:1px solid #ccc;}
 .blc{border-left:1px solid #ccc;}
@@ -168,6 +185,12 @@
 .bte{border-top:1px solid #eee;}
 .bbe{border-bottom:1px solid #eee;}
 .bn{border:none;}
+/* border-radius */
+.br1{border-radius:1px;}
+.br2{border-radius:2px;}
+.br3{border-radius:3px;}
+.br4{border-radius:4px;}
+.br5{border-radius:5px;}
 /* font-size */
 .f0{font-size:0;}
 .f10{font-size:10px;}
@@ -230,9 +253,14 @@
 /* box-sizing */
 .bx{box-sizing:border-box;}
 /*color*/
-.c9{
-    color:#999;
-}
+.c9{color:#999;}
+.cred{color:#DF2121;}
+.c0{color:#000;}
+.cf{color:#FFF;}
+/* background-color */
+.bcf{background-color:#FFF;}
+.bcf8{background-color:#F8F8F8;}
+.bcdf{background-color:#DFDFDF;}
 
 /* ------------------- multiply CSS ------------------ */
 /* 块状元素水平居中 */
@@ -279,7 +307,7 @@
     display: table;
     box-sizing: border-box;
     background: #FFF;
-    z-index: 15;
+    z-index: 101;
 }
 .header p {
     font-size: 1.285rem;
@@ -288,7 +316,103 @@
 }
 .mainHeader{
 	background: #231815;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 .mainHeader p{
 	color: #FFF;
+}
+.boxShadow{
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+}
+.indexBtn{
+    margin-left: 10%;
+    background-color: #231915;
+    color: #FFF;
+    height: 40px;
+    border-radius: 5px;
+}
+
+
+/* checkbox框样式 */
+.mycheck input[type=checkbox]{
+    visibility: hidden;
+    outline: none;
+}  
+.mycheck label{
+    top: 0;
+    left: 0;
+    border-radius:3px;
+    outline: none;
+}  
+.mycheck label:after{
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 7px;
+    background: transparent;
+    top: 3px;
+    left: 3px;
+    border: 2px solid #FFF;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.mycheck input[type=checkbox]:checked + label{
+    background-color: #231815;
+}
+.mycheck input[type=checkbox]:checked + label:after{
+    opacity: 1;
+}
+
+/* menu */
+.bg{
+    height: 100%;
+    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,.5);
+    z-index: 102;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.menu{
+    display: none;
+    height: calc(100% - 50px);
+    height: calc(100vh - 50px);
+    width: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 103;
+    background-color: #231816;
+    transition: all .2s linear;
+    overflow: hidden;
+}
+.menu div{
+    width: 150px;
+    overflow: hidden;
+    transition: all .5s linear;
+}
+.menu div:last-child{
+    bottom: 50px;
+}
+
+/* productList */
+.allListContent .listContent img{
+    background-color: #d9d8da;
+}
+.allListContent .listContent:nth-child(4n) img{
+    background-color: #e6dfd9;
+}
+.allListContent .listContent:nth-child(4n+1) img{
+    background-color: #e6dfd9;
 }
