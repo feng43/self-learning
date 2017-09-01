@@ -1,0 +1,16 @@
+@color: #4d936f;
+@height: 200px;
+
+h2{
+	color: @color;
+};
+
+.bottomBar{
+	+div{
+		height: @height;
+	}
+
+	div{
+		height: @height - 100px;
+	}
+};

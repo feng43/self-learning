@@ -1,0 +1,9 @@
+h2 {
+  color: #4d936f;
+}
+.bottomBar + div {
+  height: 200px;
+}
+.bottomBar div {
+  height: 100px;
+}
