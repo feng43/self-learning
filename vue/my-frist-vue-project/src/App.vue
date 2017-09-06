@@ -82,7 +82,16 @@ export default {
     listenToMyBoy (msg) {
       this.childWords = msg;
     }
-  }
+  },  
+  // 在组件创建完成时，执行的钩子函数  
+  created (){  
+      // 在main.js里导入并使用vue-resource之后，就可以通过this.$http来使用vue-resource了，这里我们用到了get方法  
+      this.$http.get('/api/books').then((data) => {  
+          // 由于请求成功返回的是Promise对象，我们要从data.body.data拿到books数组  
+          console.log("-------")
+          console.log(data)
+      })
+  } 
 }
 
 // var app = new Vue({
