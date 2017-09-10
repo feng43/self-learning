@@ -23,11 +23,20 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 93,
+    port: 9343,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    //本地接口测试 跨域
+    proxyTable: {
+        '/share': {
+            target: 'http://mapi.vili7.net',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/test': ''
+            }
+        }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

@@ -5,6 +5,7 @@
 .db{display:block;}
 .dib{display:inline-block;} /* if the element is block level(eg. div, li), using 'inline_any' instead */
 /* height */
+.h10{height:10px;}
 .h14{height:14px;}
 .h16{height:16px;}
 .h18{height:18px;}

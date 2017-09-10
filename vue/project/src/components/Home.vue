@@ -1,9 +1,9 @@
 <template>
-	<div class="h100">
+	<div class="h100 bcf8">
 	    <aside class="profile-nav auto pct90">
 	        <router-link to="/userCenter" class="panel rel db">
-	            <div class="user-heading bcf c0 p30 bn br5">
-	                <img alt="" src="../assets/img/home_user.png" class="mr15 ml-10 dib p10 br5">
+	            <div class="user-heading bcf c0 p15 bn br5">
+	                <img alt="" src="../assets/img/home_user.png" class="mr15 dib p10 br5">
 	                <div class="dib vt">
 		                <p class="f18 mt10 mb10">用户名</p>
 		                <p class="f18">等级</p>
@@ -40,7 +40,7 @@
 	        </div>
 	        <div class="newPanel">
 	            <router-link to="team.html" class="pct33 dib fl tc rel tdn c0">
-	                <span class="abs">
+	                <span class="abs pct100">
 	                    <img src="../assets/img/home_partner.png" alt="message" height="45px">
 	                    <span class="mt10 db f16">我的伙伴</span>
 	                </span>
@@ -75,7 +75,7 @@
 	        </div>
 	        <div class="newPanel">
 	            <router-link to="order.html" class="pct33 dib fl tc rel tdn c0">
-	                <span class="abs">
+	                <span class="abs pct100">
 	                    <img src="../assets/img/home_shop.png" alt="message" height="45px">
 	                    <span class="mt10 db f16">专属店铺</span>
 	                </span>

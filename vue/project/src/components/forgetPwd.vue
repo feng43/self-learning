@@ -14,7 +14,7 @@
 			<input type="text" placeholder="请输入验证码" class="ml10 bn on pct50">
 			<button class="abs h30 bcf br5">获取验证码</button>
 		</div>
-		<button class="loginBtn pct70 f16 db h45 auto mb20 cf bn br5 mt30">确认</button>
+		<button class="loginBtn pct70 f16 db h45 auto mb20 cf bn br5 mt30" @click="test()">确认</button>
 	</div>
 </template>
 <script>
@@ -23,6 +23,16 @@
 	export default {
 		components: {
 			pubHeader
+		},
+		methods:{
+			test () {
+				//this.$http.get("/share/shareRegister?openId=oDpeOv7h38_h6yZHoBsgDcFBelvA&shareKey=deca27296d56132a8e5b27b005098f09&source=201708100917d586187707b29").then( (result) => {
+				this.$http.get("http://mapi.vili7.net/share/register?openId=oDpeOv7h38_h6yZHoBsgDcFBelvA&shareKey=deca27296d56132a8e5b27b005098f09&source=201708100917d586187707b29").then( (result) => {
+					console.log(result);
+				}, (result) => {
+					console.log(result);
+				})
+			}
 		}
 	}
 </script>
