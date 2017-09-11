@@ -1,0 +1,55 @@
+	.detail_coll-act{
+		padding: 0.25rem 0 0;
+	    margin: 0 0 0 0.2rem;
+	}
+	.detail_coll-act_border{
+		display: block;
+		border-bottom: 0.01rem solid #F2F2F2;
+		margin: 0 0.2rem;
+	}
+	
+	.detail_coll-act_content{
+		width: 100%;
+		padding: 0.25rem 0rem 0.25rem 0rem;
+	}
+	.detail_coll-act_content .swiper-slide{
+		width: 2.5rem !important;
+		height: 1.9rem !important;
+		display: block !important;
+		margin-bottom: 0.05rem;
+	}
+	.detail_coll-act_content img{
+		width: 2.5rem;
+		height: 1.4rem;
+		min-width: 2.5rem;
+		min-height: 1.4rem;
+		border-radius: 0.08rem;
+	}
+	.detail_coll-act_content p{
+		color: #333333;
+		font-size: 0.22rem;
+		line-height: 0.22rem;
+		text-align: left;
+		padding: 0.15rem 0;
+		white-space:nowrap; 
+		overflow:hidden; 
+		text-overflow:ellipsis;
+	}
+
+	.detail_coll-act_title{
+		color: #333333;
+		font-size: 0.26rem;
+		line-height: 0.28rem;
+		font-weight: bold;
+	}
+	.detail_exh-vir_borferLeft{
+		background-image: url(../../static/images/bowuguan_detail_leftBorder_normal.png);
+		background-repeat:no-repeat;
+		background-size:0.06rem 0.26rem;
+		background-position: 0 0;
+		width: 0.06rem;
+		height: 0.26rem;
+		margin-right: 0.1rem;
+		float: left;
+		display: block;
+	}

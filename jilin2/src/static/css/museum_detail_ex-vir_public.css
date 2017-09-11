@@ -1,0 +1,58 @@
+	.detail_exh-vir{
+		padding: 0.25rem 0 0;
+	    margin: 0 0 0 0.2rem;
+	}
+	.detail_exh-vir_border{
+		display: block;
+		border-bottom: 0.01rem solid #F2F2F2;
+		margin: 0 0.2rem;
+	}
+	
+	.detail_exh-vir_content{
+		width: 100%;
+		padding: 0.25rem 0rem 0.25rem 0rem;
+		margin-right: 0.1rem;
+	}
+	
+	.detail_exh-vir_content .swiper-slide{
+		width: 4rem !important;
+		height: 2.8rem !important;
+		display: block !important;
+		margin-bottom: 0.05rem;
+
+	}
+	.detail_exh-vir_content img{
+		width: 4rem;
+		height: 2.25rem;
+		min-width: 4rem;
+		min-height: 2.25rem;
+		border-radius: 0.08rem;
+	}
+	.detail_exh-vir_content p{
+		color: #333333;
+		font-size: 0.22rem;
+		line-height: 0.22rem;
+		text-align: left;
+		padding: 0.15rem 0;
+		white-space:nowrap; 
+		overflow:hidden; 
+		text-overflow:ellipsis;
+		
+	}
+	.detail_exh-vir_title{
+		color: #333333;
+		font-size: 0.26rem;
+		line-height: 0.28rem;
+		font-weight: bold;
+	}
+	.detail_exh-vir_borferLeft{
+		background-image: url(../../static/images/bowuguan_detail_leftBorder_normal.png);
+		background-repeat:no-repeat;
+		background-size:0.06rem 0.26rem;
+		background-position: 0 0;
+		width: 0.06rem;
+		height: 0.26rem;
+		margin-right: 0.1rem;
+		float: left;
+		display: block;
+	}

@@ -1,0 +1,67 @@
+	/*艺术样式*/
+	
+	/*轮播点颜色*/
+	#art .detail_banner_btn .swiper-pagination-bullet-active{
+		
+		background-color: #ffd20c !important;
+		width: 16px !important;
+		border-radius: 4px !important;
+		
+	}
+	/*博物馆名称前小图标*/
+	#art .detail_info_text>p:nth-child(2){
+		color: #ffd20c;
+		padding-left: 0.3rem;
+		font-size: 0.22rem;
+		text-decoration: underline;	
+		background-image: url(../../static/images/bowuguan_detail_nearbyIcon_art.png);	
+		background-position: left center;
+		background-size: 0.22rem 0.27rem;
+		background-repeat: no-repeat;
+		margin-bottom: 0.1rem;
+		margin-top: 0.1rem;
+		
+		width: 5rem;
+		white-space:nowrap; 
+		overflow:hidden; 
+		text-overflow:ellipsis;
+	}
+	/*博物馆信息部分背景图*/
+	#art .detail_info{
+		width: 100%;
+		position: relative;
+		padding-top: 0.5rem;
+		border-bottom: 0.18rem solid #f2f2f2;
+		
+		background-size: 100%;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-image: url(../../static/images/bowuguan_detail_infoBg_art.png);
+	}
+	/*标题前部小 竖杠*/
+	
+	#art .detail_exh-vir_borferLeft{
+		background-image: url(../../static/images/bowuguan_detail_leftBorder_art.png);
+		background-repeat:no-repeat;
+		background-size:0.06rem 0.26rem;
+		background-position: 0 0;
+		width: 0.06rem;
+		height: 0.26rem;
+		margin-right: 0.1rem;
+		float: left;
+		display: block;
+	}
+	/*内容部分背景图*/
+	#art .detail_content_bg{
+		background-image:url(../images/bowuguan_detail_exhibitionBg_art.png);
+		background-repeat: no-repeat;
+		background-position: right top;
+		background-size: 100%;
+		z-index: -1;
+	}
+
+
+	/*弹出层背景颜色*/
+	#art .detail_info_message_title{
+		background-color: #ffd20c;
+	}
