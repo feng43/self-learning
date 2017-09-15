@@ -44,7 +44,7 @@ v<template>
 
 	}
 </script>
-<style>
+<style scoped>
 	.gotoNext{
     	border: 1px solid #54ADF3;
 	    outline: none;

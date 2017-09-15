@@ -28,7 +28,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 	.infoPanel div{
 		height: 75px;
 		margin-left: 2%;

@@ -11,6 +11,14 @@ import addMyPartner from "../components/addMyPartner.vue"
 import addMyInvestor from "../components/addMyInvestor.vue"
 import bankCard from "../components/bankCard.vue"
 import editCard from "../components/editCard.vue"
+import integralCard from "../components/integralCard.vue"
+import editPwd from "../components/editPwd.vue"
+import register from "../components/register.vue"
+import integralDetail from "../components/integralDetail.vue"
+import getCash from "../components/getCash.vue"
+import share from "../components/share.vue"
+import pay from "../components/pay.vue"
+import paySuccess from "../components/paySuccess.vue"
 
 export default[
 	{
@@ -18,10 +26,10 @@ export default[
 		component:Home
 	},{
 		path:'/',
-		redirect:'/home'
+		redirect:'/login'
 	},{
 		path:'*',
-		redirect:'/home'
+		redirect:'/login'
 	},{
 		path:'/userCenter',
 		component:userCenter
@@ -55,5 +63,29 @@ export default[
 	},{
 		path:'/editCard',
 		component:editCard
+	},{
+		path:'/integralCard',
+		component:integralCard
+	},{
+		path:'/editPwd',
+		component:editPwd
+	},{
+		path:'/register',
+		component:register
+	},{
+		path:'/integralDetail',
+		component:integralDetail
+	},{
+		path:'/getCash',
+		component:getCash
+	},{
+		path:'/share',
+		component:share
+	},{
+		path:'/pay',
+		component:pay
+	},{
+		path:'/paySuccess',
+		component:paySuccess
 	}
 ]

@@ -1,18 +1,13 @@
 <template>
 	<div class="bcf rel">
-		<pub-header title="找回密码"></pub-header>
+		<pub-header title="修改密码"></pub-header>
 		<div class="pct80 auto f18 mt20 p10 bbc">
-			<span class="dib pr10 brc">手机号</span>
-			<input type="text" placeholder="请输入手机号" class="ml10 bn on pct50" v-model="data.mobile" @focus="cancelErrorTip()">
+			<span class="pr10 brc">旧密码</span>
+			<input type="password" placeholder="请输入旧密码" class="ml10 bn on pct50" v-model="data.oldPassWord" @focus="cancelErrorTip()">
 		</div>
 		<div class="pct80 auto f18 mt20 p10 bbc">
 			<span class="dib pr10 brc">新密码</span>
-			<input type="text" placeholder="请输入新密码" class="ml10 bn on pct50" v-model="data.passWord" @focus="cancelErrorTip()">
-		</div>
-		<div class="pct60 f18 mt20 p10 bbc bx dib rel panel">
-			<span class="dib pr10 brc">验证码</span>
-			<input type="text" placeholder="请输入验证码" class="ml10 bn on pct50" v-model="data.smsCode" @focus="cancelErrorTip()">
-			<button class="abs h30 bcf br5 pct33" @click="sendCode()" v-text="codeText"></button>
+			<input type="password" placeholder="请输入新密码" class="ml10 bn on pct50" v-model="data.passWord" @focus="cancelErrorTip()">
 		</div>
 		<button class="forgetBtn pct70 f16 db h45 auto mb20 cf bn br5 mt30" @click="forPwd()">确认</button>
 		<transition name="showError">
@@ -26,11 +21,11 @@
 	export default {
 		data () {
 			return {
-				data : {},
+				data : {
+					mobile : 13363037174
+				},
 				showErrorMsgTip : false,
-				errorMsg : "",
-				codeText : "获取验证码",
-				num : 60
+				errorMsg : ""
 			}
 		},		
 		components: {
@@ -57,20 +52,31 @@
                         that.showErrorMsgTip = false;
                     },2000);
 				};
-				if(!this.data.smsCode){
+				this.$http.post("/huiyimember/web/hyperson/upPassWord",this.data).then( (result) => {
+					console.log(result);
 					this.showErrorMsgTip = true;
-					this.errorMsg = "请输入验证码";
-					return;
+					this.errorMsg = "result.content.data.msg";
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
-				};
-				this.$http.post("/huiyimember/web/hyperson/forgetPwd",this.data).then( (result) => {
-					console.log(result);
-					if(result && result.body.content.data.id){
-						this.$router.push({path:"login"});
-					}
+					/*if(result.content.data.code == 200 || result.content.data.code == "200"){
+						this.showErrorMsgTip = true;
+						this.errorMsg = "result.content.data.msg";
+						return;
+						let that = this;
+	                    setTimeout(function () {
+	                        that.showErrorMsgTip = false;
+	                    },2000);
+					} else {
+						this.showErrorMsgTip = true;
+						this.errorMsg = "result.content.data.msg";
+						return;
+						let that = this;
+	                    setTimeout(function () {
+	                        that.showErrorMsgTip = false;
+	                    },2000);
+					}*/
 				}, (result) => {
 					console.log(result);
 				})
@@ -78,60 +84,11 @@
 			//输入框聚焦的时候隐藏提示框
             cancelErrorTip(){
                 this.showErrorMsgTip = false;
-            },
-			sendCode () {
-				let that = this;
-				console.log(this.data.mobile);
-				if(this.num != 60){
-					return;
-				}
-				var url = "/huiyimember/web/hyperson/sendMsgCode?mobile=" + this.data.mobile;
-				if(!this.data.mobile){
-					this.showErrorMsgTip = true;
-					this.errorMsg = "请输入11位手机号";
-					return;
-					//let that = this;
-                    setTimeout(function () {
-                        that.showErrorMsgTip = false;
-                    },2000);
-				}
-				this.codeText = "60s";
-				var changeText = setInterval ( () => {
-					if(that.num == "0"){
-						that.codeText = "获取验证码";
-						that.num = 60;
-						window.clearInterval(changeText);
-					} else {
-						that.num--;
-						that.codeText = that.num + "s";
-					}
-				},1000);
-				this.$http.get(url).then( (result) => {
-					console.log(result);
-				}, (result) => {
-					console.log("--err--")
-					console.log(result);
-				});
-			}
-		}/*,
-		watch : {
-			codeText (val, oldVal) {
-				if(this.num == "0"){
-					this.codeText = "获取验证码";
-				} else {
-					setTimeout( function(){
-						num--;
-						this.codeText = num + "s";
-					},1000);
-				}
-			}
-		}*/
+            }
+		}
 	}
 </script>
 <style scoped>
-	.panel{
-		margin-left: 7%;
-	}
 	button{
 		bottom: 20%;
     	right: -40%;

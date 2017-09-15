@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
+import wx from 'weixin-js-sdk'
+/*Vue.use(wx)*/
 Vue.use(VueResource)
 
 

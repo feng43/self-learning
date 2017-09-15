@@ -31,7 +31,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 	.cardPanel{
 		background: url(../assets/img/bank_bbc.png) no-repeat;
 		-webkit-background-size: 100%;

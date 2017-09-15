@@ -1,20 +1,28 @@
 <template>
 	<div class="bcf rel">
-		<pub-header title="找回密码"></pub-header>
+		<pub-header title="注册"></pub-header>
+		<div class="pct80 auto f18 mt20 p10 bbc">
+			<span class="dib pr10 brc">推荐人姓名</span>
+			<p class="dib ml10 bn on pct50">{{mobile}}</p>
+		</div>
 		<div class="pct80 auto f18 mt20 p10 bbc">
 			<span class="dib pr10 brc">手机号</span>
 			<input type="text" placeholder="请输入手机号" class="ml10 bn on pct50" v-model="data.mobile" @focus="cancelErrorTip()">
 		</div>
 		<div class="pct80 auto f18 mt20 p10 bbc">
 			<span class="dib pr10 brc">新密码</span>
-			<input type="text" placeholder="请输入新密码" class="ml10 bn on pct50" v-model="data.passWord" @focus="cancelErrorTip()">
+			<input type="password" placeholder="请输入新密码" class="ml10 bn on pct50" v-model="data.passWord" @focus="cancelErrorTip()">
 		</div>
 		<div class="pct60 f18 mt20 p10 bbc bx dib rel panel">
 			<span class="dib pr10 brc">验证码</span>
 			<input type="text" placeholder="请输入验证码" class="ml10 bn on pct50" v-model="data.smsCode" @focus="cancelErrorTip()">
-			<button class="abs h30 bcf br5 pct33" @click="sendCode()" v-text="codeText"></button>
+			<button class="abs h30 bcf br5" @click="sendCode()" v-text="codeText"></button>
 		</div>
-		<button class="forgetBtn pct70 f16 db h45 auto mb20 cf bn br5 mt30" @click="forPwd()">确认</button>
+		<div class="pct80 auto f18 mt20 p10 bbc">
+			<span class="dib pr10 brc">收货地址</span>
+			<input type="text" placeholder="请输入收货地址" class="ml10 bn on pct50" v-model="data.address" @focus="cancelErrorTip()">
+		</div>
+		<button class="forgetBtn pct40 f16 db h45 auto mb20 cf bn br5 mt30" @click="forPwd()">下一步</button>
 		<transition name="showError">
             <p class="abs pct50 h30 f18 cf tc errorTip" v-show="showErrorMsgTip" v-text="errorMsg"></p>
         </transition>
@@ -30,15 +38,22 @@
 				showErrorMsgTip : false,
 				errorMsg : "",
 				codeText : "获取验证码",
-				num : 60
+				num : 60,
+				mobile : "",
+				id : ""
 			}
 		},		
 		components: {
 			pubHeader
 		},
+		created () {
+			this.mobile = this.$route.query.mobile;
+			this.id = this.$route.query.id;
+			//console.log(this.$route);
+			//this.$router.push({path:"register"});
+		},
 		methods:{
 			forPwd () {
-				//this.$http.get("/share/shareRegister?openId=oDpeOv7h38_h6yZHoBsgDcFBelvA&shareKey=deca27296d56132a8e5b27b005098f09&source=201708100917d586187707b29").then( (result) => {
 				if(!this.data.mobile){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入11位手机号";
@@ -57,7 +72,7 @@
                         that.showErrorMsgTip = false;
                     },2000);
 				};
-				if(!this.data.smsCode){
+				/*if(!this.data.smsCode){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入验证码";
 					return;
@@ -65,11 +80,20 @@
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
-				};
-				this.$http.post("/huiyimember/web/hyperson/forgetPwd",this.data).then( (result) => {
+				};*/
+				this.data.id = this.id;
+				this.$http.post("/huiyimember/pub/registPerson",this.data).then( (result) => {
 					console.log(result);
-					if(result && result.body.content.data.id){
-						this.$router.push({path:"login"});
+					if(result && result.body.content.data.code == 200){
+						//this.$router.push({path:"home"});
+						window.location.href = "http://dwgl.nor-land.com/hyys/?#/pay?orderId="+result.body.content.data.orderId;
+					} else {
+						this.showErrorMsgTip = true;
+						this.errorMsg = result.body.content.data.msg;
+						let that = this;
+	                    setTimeout(function () {
+	                        that.showErrorMsgTip = false;
+	                    },2000);
 					}
 				}, (result) => {
 					console.log(result);
@@ -85,7 +109,7 @@
 				if(this.num != 60){
 					return;
 				}
-				var url = "/huiyimember/web/hyperson/sendMsgCode?mobile=" + this.data.mobile;
+				var url = "/huiyimember/pub/sendRegisterMsgCode?mobile=" + this.data.mobile;
 				if(!this.data.mobile){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入11位手机号";
@@ -109,23 +133,11 @@
 				this.$http.get(url).then( (result) => {
 					console.log(result);
 				}, (result) => {
-					console.log("--err--")
+					console.log("--err--");
 					console.log(result);
 				});
 			}
-		}/*,
-		watch : {
-			codeText (val, oldVal) {
-				if(this.num == "0"){
-					this.codeText = "获取验证码";
-				} else {
-					setTimeout( function(){
-						num--;
-						this.codeText = num + "s";
-					},1000);
-				}
-			}
-		}*/
+		}
 	}
 </script>
 <style scoped>
@@ -156,5 +168,8 @@
     }
     .showError-enter,.showError-leave-active{
         opacity: 0;
+    }
+    div div button{
+    	width: 43%;
     }
 </style>

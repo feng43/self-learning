@@ -7,7 +7,8 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
+    //assetsPublicPath: '/dist/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -29,13 +30,19 @@ module.exports = {
     assetsPublicPath: '/',
     //本地接口测试 跨域
     proxyTable: {
-        '/share': {
-            target: 'http://mapi.vili7.net',
+        /*'/huiyimember': {
+            target: 'http://192.168.120.77:7176',
+            changeOrigin: true
+        }*/
+        '/huiyimember': {
+            //target: 'http://59.110.239.88:80',
+            target: 'http://dwgl.nor-land.com',
             changeOrigin: true,
             pathRewrite: {
-              '^/test': ''
+                '^/huiyimember': '/huiyimember'
             }
         }
+
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

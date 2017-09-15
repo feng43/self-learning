@@ -1,7 +1,7 @@
 <template>
 	<div class="pct100 pr10 pl10 bcf bx header mainHeader">
 		<p class="tc c0 vm">
-			<img src="../assets/img/left_arrow.png" alt="" class="fl mt5 w10">
+			<img src="../assets/img/left_arrow.png" alt="" class="fl mt5 w10" @click="gotoBack()">
 			<span v-text='title'></span>
 			<router-link v-if='toLinkText' v-text='toLinkText' :to='toLink' class="tdn f16 mt5 abs linkText"></router-link>
 		</p>
@@ -10,10 +10,15 @@
 </template>
 <script>
 	export default {
-		props: [ "title", "toLink", "toLinkText" ]
+		props: [ "title", "toLink", "toLinkText" ],
+		methods : {
+			gotoBack () {
+				this.$router.go(-1)
+			}
+		}
 	}
 </script>
-<style>
+<style scoped>
 	.header {
 	    height: 50px;
 	    display: table;
