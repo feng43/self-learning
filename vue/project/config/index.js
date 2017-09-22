@@ -30,18 +30,26 @@ module.exports = {
     assetsPublicPath: '/',
     //本地接口测试 跨域
     proxyTable: {
+
+        //测试服
         /*'/huiyimember': {
-            target: 'http://192.168.120.77:7176',
+            target: 'http://59.110.239.88',
             changeOrigin: true
         }*/
+
+        //本地
         '/huiyimember': {
+            target: 'http://192.168.120.104:7176',
+            changeOrigin: true
+        }
+        /*'/huiyimember': {
             //target: 'http://59.110.239.88:80',
             target: 'http://dwgl.nor-land.com',
             changeOrigin: true,
             pathRewrite: {
                 '^/huiyimember': '/huiyimember'
             }
-        }
+        }*/
 
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

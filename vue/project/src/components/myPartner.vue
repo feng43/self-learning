@@ -4,45 +4,45 @@
 		<div class="bcf8 p20 ovh infoPanel">
 			<div class="tc bcf pct30 dib vm rel br5">
 				<p class="rel">
-				<!-- <span class="db b f22">{{newData.data.uw_investor_num}}</span> -->
-				<span class="db b f22">0</span>
+				<span class="db b f22">{{newData.data.uw_investor_num || 0}}</span>
+				<!-- <span class="db b f22">0</span> -->
 				<span class="f14 c9">发起人</span>
 				</p>
 			</div>
 			<div class="tc bcf pct30 dib vm rel br5">
 				<p class="rel">
-				<!-- <span class="db b f22">{{newData.data.uw_partner_num}}</span> -->
-				<span class="db b f22">2</span>
+				<span class="db b f22">{{newData.data.uw_partner_num || 0}}</span>
+				<!-- <span class="db b f22">2</span> -->
 				<span class="f14 c9">合伙人</span>
 				</p>
 			</div>
 			<div class="tc bcf pct30 dib vm rel br5">
 				<p class="rel">
-				<!-- <span class="db b f22">{{newData.data.uw_card_num}}</span> -->
-				<span class="db b f22">0</span>
+				<span class="db b f22">{{newData.data.uw_card_num || 0}}</span>
+				<!-- <span class="db b f22">0</span> -->
 				<span class="f14 c9">慧享卡</span>
 				</p>
 			</div>
 		</div>
 		<div class="bcf pt20 pl10 pr10 partnerPanel">
 			<p class="f20 b mb10">一级伙伴</p>
-			<!-- <div class="rel f18 bbc pt10 pb10" v-for="partner in partnerList">
+			<div class="rel f18 bbc pt10 pb10" v-for="partner in partnerList">
 				<img src="../assets/img/one.png" alt="" class="pct10 mt5 mr10">
 				<span class="vm dib">{{partner.uw_partner_name}}</span>
 				<div class="dib abs mr10 c9">
 					<span>{{partner.uw_twolevel_num}}</span>
 					<img src="../assets/img/right_arrow.png" alt="" class="h10 ml5">
 				</div>
-			</div> -->
+			</div>
 
-			<div class="rel f18 bbc pt10 pb10">
+			<!-- <div class="rel f18 bbc pt10 pb10">
 				<img src="../assets/img/one.png" alt="" class="pct10 mt5 mr10">
 				<span class="vm dib">艾文昌</span>
 				<div class="dib abs mr10 c9">
 					<span>12</span>
 					<img src="../assets/img/right_arrow.png" alt="" class="h10 ml5">
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
@@ -69,12 +69,15 @@
 					Store.save("");
 					this.$router.push({path:"login"});
 				};
-        		this.$http.post('/huiyimember/web/hyperson/myPartner',{personCode:/*Store.fetch().personCode*/"HSHP0000157",level:1}).then((result) => {
+        		this.$http.post('/huiyimember/web/hyperson/myPartner',{personCode:Store.fetch().personCode,level:1}).then((result) => {
 					console.log(result);
 					if(result.body.content.data.code == 200){
 						this.newData = JSON.parse(result.body.content.data.msg);
+						if(!this.newData || this.newData.status == 0){
+							this.newData.data = {};
+						}
 						console.log(this.newData);
-						//this.partnerList = this.newData.data.partnerInfo;
+						this.partnerList = this.newData.data.partnerInfo;
 					} else {
 						this.showErrorMsgTip = true;
 						this.errorMsg = "出错了";

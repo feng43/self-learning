@@ -1,7 +1,7 @@
 <template>
 		<div class="container bcf8 h100 pct100 p0">
 			<div class="tab-wrapper bcf rel tc pct100">
-			<img src="../assets/img/left_arrow.png" alt="" class="mt20 w10 abs" @click="gotoBack()">
+			<img src="../assets/img/left_arrow.png" alt="" class="mt20 w10 abs gotoback" @click="gotoBack()">
 			<!--tab section 1-->
 				<input type="radio" name="tab-radio" class="tab-radio dn" id="tab-radio-1" checked>
 				<label for="tab-radio-1" class="tab-handler tab-handler-1 rel dib pl30 pr30 f16">收入明细</label>
@@ -39,7 +39,8 @@
 		</div>
 </template>
 <script>
-	import pubHeader from "./header.vue"
+	import pubHeader from "./header.vue";
+	import Store from "../assets/js/store";
 
 	export default {
 		components: {
@@ -55,11 +56,14 @@
         },
 		methods : {
 			getDetail() {
-				this.$http.post('/huiyimember/web/integral/detail',{personCode:"HSHP00000157"}).then((result) => {
+				this.$http.post('/huiyimember/web/integral/detail',{personCode:Store.fetch().personCode}).then((result) => {
 					console.log(result);
 					if(result.body.content.data.code == 200){
 						var newData = JSON.parse(result.body.content.data.msg);
 						console.log(newData);
+						if(!newData.data){
+							this.bonusList = [];	
+						}
 						this.bonusList = newData.data;
 					} else {
 						this.showErrorMsgTip = true;
@@ -91,7 +95,7 @@
 	}
 </script>
 <style scope>
-	img{
+	.gotoback{
 		left: 10px;
 	}
 	.container{

@@ -64,10 +64,20 @@
 				});
 			},
 			applyCash () {
+				if(!this.addMoney){
+					this.showErrorMsgTip = true;
+					this.errorMsg = "请输入提现金额";
+					let that = this;
+                    setTimeout(function () {
+                        that.showErrorMsgTip = false;
+                    },2000);
+					return;
+				}
 				var applyData = {
 					mobile : Store.fetch().mobile,
-					passWord : 123456,
-					addMoney : this.addMoney
+					passWord : 111111,
+					addMoney : this.addMoney,
+					personCode : Store.fetch().personCode,
 				}
 				this.$http.post('/huiyimember/web/integral/applyCash',applyData).then((result) => {
 					console.log(result);

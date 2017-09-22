@@ -21,11 +21,8 @@
 			<span class="db f16 c9">成员类型</span>
 			<!-- <input type="text" class="pct100 bdc h30 bx p5 pl15" v-model="data.uw_person_type"> -->
 			<select name="uw_person_type" class="pct100 bdc h30 bx p5 pl15" v-model="data.uw_person_type">
-				<option value="1">公司投资人</option>
-				<option value="5">省级投资人</option>
-				<option value="6">市级投资人</option>
-				<option value="7">区县投资人</option>
-				<option value="8">囿文水晶卡</option>
+				<option value="2">投资人</option>
+				<option value="3">合伙人</option>
 			</select>
 		</div>
 		<button class="pct70 f16 db h45 auto mb20 cf bn br5 mt30" @click="gotoNext()">下一步</button>
@@ -54,29 +51,29 @@
 				if(!this.data.uw_real_name){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入真实姓名";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				if(!this.data.tphone){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入推荐人手机号/编码";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				if(!this.data.uw_person_type){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请选择公司成员类型";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				registerStore.save(this.data);
 				this.$router.push({path:"addPartnerSec"});

@@ -7,11 +7,11 @@
 		</div>
 		<div class="pct80 auto f18 mt20 p10 bbc">
 			<span class="dib pr10 brc">新密码</span>
-			<input type="text" placeholder="请输入新密码" class="ml10 bn on pct50" v-model="data.passWord" @focus="cancelErrorTip()">
+			<input type="password" placeholder="请输入新密码" class="ml10 bn on pct50" v-model="data.passWord" @focus="cancelErrorTip()">
 		</div>
-		<div class="pct60 f18 mt20 p10 bbc bx dib rel panel">
+		<div class="pct60 f18 mt20 p10 bbc bx dib rel codePanel">
 			<span class="dib pr10 brc">验证码</span>
-			<input type="text" placeholder="请输入验证码" class="ml10 bn on pct50" v-model="data.smsCode" @focus="cancelErrorTip()">
+			<input type="text" placeholder="请输入验证码" class="f16 ml10 bn on pct50" v-model="data.smsCode" @focus="cancelErrorTip()">
 			<button class="abs h30 bcf br5 pct33" @click="sendCode()" v-text="codeText"></button>
 		</div>
 		<button class="forgetBtn pct70 f16 db h45 auto mb20 cf bn br5 mt30" @click="forPwd()">确认</button>
@@ -42,34 +42,46 @@
 				if(!this.data.mobile){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入11位手机号";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				if(!this.data.passWord){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入新密码";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				if(!this.data.smsCode){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入验证码";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
-				this.$http.post("/huiyimember/web/hyperson/forgetPwd",this.data).then( (result) => {
+				this.$http.post("/huiyimember/pub/forgetPwd",this.data).then( (result) => {
 					console.log(result);
-					if(result && result.body.content.data.id){
-						this.$router.push({path:"login"});
+					if(result && result.body.content.data.code == 200){
+						this.showErrorMsgTip = true;
+						this.errorMsg = "修改成功";
+						let that = this;
+	                    setTimeout(function () {
+							that.$router.push({path:"login"});
+	                    },2000);
+					} else {
+						this.showErrorMsgTip = true;
+						this.errorMsg = result.body.content.data.msg;
+						let that = this;
+	                    setTimeout(function () {
+	                        that.showErrorMsgTip = false;
+	                    },2000);
 					}
 				}, (result) => {
 					console.log(result);
@@ -85,15 +97,15 @@
 				if(this.num != 60){
 					return;
 				}
-				var url = "/huiyimember/web/hyperson/sendMsgCode?mobile=" + this.data.mobile;
+				var url = "/huiyimember/pub/sendMsgCode?mobile=" + this.data.mobile;
 				if(!this.data.mobile){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入11位手机号";
-					return;
 					//let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				}
 				this.codeText = "60s";
 				var changeText = setInterval ( () => {
@@ -129,7 +141,7 @@
 	}
 </script>
 <style scoped>
-	.panel{
+	.codePanel{
 		margin-left: 7%;
 	}
 	button{

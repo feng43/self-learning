@@ -31,7 +31,7 @@ export default {
         this.signature = configData.signature;
         var _this = this;
         wx.config({
-          debug: true,
+          debug: false,
           appId: _this.appId,
           timestamp: _this.timestamp,
           nonceStr: _this.nonceStr,
@@ -109,11 +109,10 @@ export default {
         console.log(err);
 
       })
-    }
+  }
 }
 </script>
-<!-- <script type="text/javascript" src="./assets/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="./assets/js/swiper.min.js"></script> -->
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
