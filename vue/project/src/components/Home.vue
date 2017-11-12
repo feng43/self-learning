@@ -99,7 +99,7 @@
 			return {
 				personCode : Store.fetch().personCode,
 				shopId : Store.fetch().shopId,
-				shareUrl : '/share?name='+Store.fetch().mobile
+				shareUrl : '/share'
 			}
 		},
 		created () {

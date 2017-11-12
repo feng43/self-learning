@@ -8,6 +8,10 @@
 			<div class="passwordIcon rel">
 				<input type="password" placeholder="请输入密码" class="loginInput h45 pct70 f16 cf pl40 mb20 bx br5 bn rel" v-model="loginData.passWord">
 			</div>
+			<div class="passwordIcon imgCodePnael rel pct100 auto tl">
+				<input type="text" placeholder="请输入验证码" class="loginInput h45 pct40 f16 cf pl40 mb20 bx br5 bn rel vt" v-model="loginData.imgCode" @blur="checkImgCode()">
+				<img :src="imgUrl" alt="" class="pct30 h45" @click="getImgCode()">
+			</div>
 			<button class="loginBtn pct70 f16 db h45 auto mb20 cf bn br5" @click="login()">登录</button>
 			<div class="tr pct70 auto">
 				<span class="f16" @click="gotoForget()">忘记密码</span>
@@ -20,41 +24,107 @@
 </template>
 <script>
 	import Store from "../assets/js/store";
+	import payStore from "../assets/js/payStore"
 	export default{
 		data () {
 			return {
 				loginData : {},      //登录信息
 				showErrorMsgTip : false,
-				errorMsg : ""
+				errorMsg : "",
+				imgCode : false,
+				imgUrl : ""
 			}
 		},
+		activated(){
+			this.getImgCode();
+		},
 		methods : {
+			getImgCode () {
+				this.$http.get("/huiyimember/syn/createImgCode").then( (result) => {
+					console.log(result);
+					if(!result.body){
+						this.showErrorMsgTip = true;
+						this.errorMsg = "出错了";
+						let that = this;
+	                    setTimeout(function () {
+	                        that.showErrorMsgTip = false;
+	                    },2000);
+					} else {
+						this.imgUrl = "data:image/jpeg;base64," + result.body;
+					}
+				}, (result) => {
+					console.log(result);
+					this.showErrorMsgTip = true;
+					this.errorMsg = "出错了";
+					let that = this;
+                    setTimeout(function () {
+                        that.showErrorMsgTip = false;
+                    },2000);
+				})
+			},
+			checkImgCode () {
+				if(!this.loginData.imgCode){
+					return;
+				}
+				this.$http.get("/huiyimember/syn/checkImgCode?imgCode=" + this.loginData.imgCode).then( (result) => {
+					console.log(result);
+					if(result.body.code != 200){
+						this.showErrorMsgTip = true;
+						this.errorMsg = result.body.msg;
+						let that = this;
+	                    setTimeout(function () {
+	                        that.showErrorMsgTip = false;
+	                    },2000);
+	                    this.imgCode = false;
+					} else {
+						this.imgCode = true;
+					}
+				}, (result) => {
+					console.log(result);
+					this.showErrorMsgTip = true;
+					this.errorMsg = "出错了";
+					let that = this;
+                    setTimeout(function () {
+                        that.showErrorMsgTip = false;
+                    },2000);
+				})
+			},
 			login () {
 				console.log(this.loginData);
 				//this.$router.push({path:"Login"});
 				if(!this.loginData.mobile){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入手机号";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				if(!this.loginData.passWord){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入密码";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				this.$http.post("/huiyimember/pub/checkLogin",this.loginData).then( (result) => {
 					console.log(result);
-					if(result && result.body.content.data.id){
+					if(result && result.body.content){
+						if(result.body.content.data.code == 405 && result.body.content.data.orderId){
+							payStore.save(result.body.content.data.orderId);
+							this.showErrorMsgTip = true;
+							this.errorMsg = '此账号尚未激活';
+							let that = this;
+							setTimeout(function () {
+								window.location.href = "http://dwgl.nor-land.com/huiyimember/wxcode";
+							},2000);
+							return;
+						}
 						var saveData = {
-							id : result.body.content.data.id,
+							id : result.body.content.data.personId,
 							mobile : result.body.content.data.mobile,
 							personCode : result.body.content.data.personCode,
 							shopId : result.body.content.data.shopId
@@ -63,8 +133,7 @@
 						this.$router.push({path:"home"});
 					} else {
 						this.showErrorMsgTip = true;
-						this.errorMsg = result.message;
-						return;
+						this.errorMsg = result.body.message;
 						let that = this;
 	                    setTimeout(function () {
 	                        that.showErrorMsgTip = false;
@@ -142,6 +211,12 @@
 	}
 	.loginBtn{
 		background: #54ADF3;
+	}
+	.imgCodePnael{
+		padding-left: 15%;
+	}
+	.imgCodePnael:before{
+		left: 17%;
 	}
 	.errorTip{
         background-color: rgba(102, 102, 102, 0.9);

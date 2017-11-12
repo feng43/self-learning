@@ -17,12 +17,13 @@
 </template>
 <script>
 	import pubHeader from "./header.vue"
+	import Store from "../assets/js/store";
 
 	export default {
 		data () {
 			return {
 				data : {
-					mobile : 13363037174
+					mobile : Store.fetch().mobile
 				},
 				showErrorMsgTip : false,
 				errorMsg : ""
@@ -37,29 +38,32 @@
 				if(!this.data.mobile){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入11位手机号";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				if(!this.data.passWord){
 					this.showErrorMsgTip = true;
 					this.errorMsg = "请输入新密码";
-					return;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+					return;
 				};
 				this.$http.post("/huiyimember/web/hyperson/upPassWord",this.data).then( (result) => {
 					console.log(result);
 					this.showErrorMsgTip = true;
-					this.errorMsg = "result.content.data.msg";
+					this.errorMsg = result.body.content.data.msg;
 					let that = this;
                     setTimeout(function () {
                         that.showErrorMsgTip = false;
                     },2000);
+                    if(result.body.content.data.code == 200){
+                    	that.$router.push({path:"home"});
+                    }
 					/*if(result.content.data.code == 200 || result.content.data.code == "200"){
 						this.showErrorMsgTip = true;
 						this.errorMsg = "result.content.data.msg";
