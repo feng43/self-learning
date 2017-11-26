@@ -1,0 +1,92 @@
+border-1px($color)
+	position: relative
+	&:after
+		display: block
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		border-top: 1px solid $color
+		content: " "
+		
+
+border-none()
+	&:after
+		display: none
+		
+
+bg-image($url)
+	background-image: url($url + "@2x.png")
+	@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+		background-image: url($url + "@3x.png")
+		
+// 中间三角 第一个参数为背景色 第二个为边框色
+center-border($bg, $bbg)
+	&:before, &:after
+		content: ''
+		display: inline-block
+		width: 0px
+		position: absolute
+		box-sizing: border-box
+	&:before
+		top: -5px
+		right: -20px
+		border-top: 25px solid transparent
+		border-bottom: 25px solid transparent
+		border-left: 20px solid $bbg
+		border-right: 0px solid transparent
+		border-radius: 9px
+	&:after
+		right: -16px
+		border-top: 20px solid transparent
+		border-bottom: 20px solid transparent
+		border-right: 0px solid transparent
+		border-left: 16px solid $bg
+
+// 上方三角
+top-border($bg, $bbg)
+	&:before, &:after
+		content: ''
+		display: inline-block
+		width: 0px
+		position: absolute
+		box-sizing: border-box
+	&:before
+		left: -20px
+		top: -2px
+		border-top: 30px solid $bbg
+		border-left: 24px solid transparent
+		border-bottom: 0px solid transparent
+		border-right: 0px solid transparent
+	&:after
+		left: -16px
+		top: 0px
+		border-top: 20px solid $bg
+		border-left: 16px solid transparent
+		border-bottom: 0px solid transparent
+		border-right: 0px solid transparent
+		z-index: 99
+		
+// 下方三角
+bottom-border($bg, $bbg)
+	&:before, &:after
+		content: ''
+		display: inline-block
+		width: 0px
+		position: absolute
+		box-sizing: border-box
+	&:before
+		left: -20px
+		bottom: -2px
+		border-bottom: 30px solid $bbg
+		border-left: 24px solid transparent
+		border-top: 0px solid transparent
+		border-right: 0px solid transparent
+		z-index: -1
+	&:after
+		left: -16px
+		bottom: 0px
+		border-bottom: 20px solid $bg
+		border-left: 16px solid transparent
+		border-top: 0px solid transparent
+		border-right: 0px solid transparent
