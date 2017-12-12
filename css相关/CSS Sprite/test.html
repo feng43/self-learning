@@ -9,30 +9,28 @@
 			font-weight: 700;
 			text-transform: lowercase;
 			fill: none;
-			fill-opacity: 0;
-			stroke: #3498db;
 			stroke-width: 2px;
-			stroke-dasharray: 90 310;
-			animation: stroke 6s infinite linear;
+			stroke-dasharray: 90 410;
+			animation: stroke 7.5s infinite linear;
 		}
 		.text2{
-			stroke: #f39c12;
 			animation-delay: -1.5s;
 		}
 		.text3{
-			stroke: #f39c12;
 			animation-delay: -3s;
 		}
 		.text4{
-			stroke: #9b59b6;
 			animation-delay: -4.5s;
+		}
+		.text5{
+			animation-delay: -6s;
 		}
 		@keyframes stroke{
 			to {
-				stroke-dashoffset: -400;
+				stroke-dashoffset: -500;
 			}
 		}
-		.animation{
+		/* .animation{
 			background: url('./liukanshan.png') 0 0 no-repeat;
 			width: 470px;
 			height: 580px;
@@ -57,27 +55,51 @@
 			to {
 				background-position: -4700px -1160px;
 			}
-		}
+		} */
 	</style>
 </head>
 <body>
 	<svg width="100%" height="100">
-		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text">
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text" stroke="#3498db">
 			sunshifeng
 		</text>
-		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text2">
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text2" stroke="#f39c12">
 			sunshifeng
 		</text>
-		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text3">
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text3" stroke="#861111">
 			sunshifeng
 		</text>
-		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text4">
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text4" stroke="#9b59b6">
+			sunshifeng
+		</text>
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text5" stroke="#0aa3e8">
 			sunshifeng
 		</text>
 	</svg>
 
-	<div class="animation">
-		<!-- <img src="./liukanshan.png" alt="" width="47" > -->
+	<!-- <div id="newSvg"></div> -->
+	<svg width="100%" height="100" id="newSvg"></svg>
+
+	<button class="add">添加</button>
+	<div>
+		<span>文字</span>
+		<input type="text" class="textNew">
 	</div>
+	<!-- <div class="animation">
+		<img src="./liukanshan.png" alt="" width="47" >
+	</div> -->
+	<script>
+		document.querySelector(".add").onclick = function(){
+			var text = document.querySelector(".textNew").value;
+			// var str = '<svg width="100%" height="100">';
+			var str = '';
+			var colorList = ['#3498db','#f39c12','#861111','#9b59b6','#0aa3e8'];
+			for(var i = 0; i < colorList.length; i++){
+				str += '<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text'+i+'" stroke="'+colorList[i]+'">'+text+'</text>';
+			};
+			// str += '</svg>';
+			document.querySelector("#newSvg").innerHTML = str;
+		};
+	</script>
 </body>
 </html>
