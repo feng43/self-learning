@@ -2,7 +2,7 @@
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
-//合并文件
+// 合并文件
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
