@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.text{
+			font-size: 64px;
+			font-weight: 700;
+			text-transform: lowercase;
+			fill: none;
+			fill-opacity: 0;
+			stroke: #3498db;
+			stroke-width: 2px;
+			stroke-dasharray: 90 310;
+			animation: stroke 6s infinite linear;
+		}
+		.text2{
+			stroke: #f39c12;
+			animation-delay: -1.5s;
+		}
+		.text3{
+			stroke: #f39c12;
+			animation-delay: -3s;
+		}
+		.text4{
+			stroke: #9b59b6;
+			animation-delay: -4.5s;
+		}
+		@keyframes stroke{
+			to {
+				stroke-dashoffset: -400;
+			}
+		}
+		.animation{
+			background: url('./liukanshan.png') 0 0 no-repeat;
+			width: 470px;
+			height: 580px;
+			animation: test 2s infinite steps(10);
+		}
+		@keyframes test{
+			from {
+				background-position: 0 0;
+			}
+			33.3% {
+				background-position: -4700px 0;
+			}
+			33.33% {
+				background-position: 0px -580px;
+			}
+			66.6% {
+				background-position: -4700px -580px;
+			}
+			66.66% {
+				background-position: 0px -1160px;
+			}
+			to {
+				background-position: -4700px -1160px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<svg width="100%" height="100">
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text">
+			sunshifeng
+		</text>
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text2">
+			sunshifeng
+		</text>
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text3">
+			sunshifeng
+		</text>
+		<text text-anchor="middle" x="50%" y="50%" fill="none" class="text text4">
+			sunshifeng
+		</text>
+	</svg>
+
+	<div class="animation">
+		<!-- <img src="./liukanshan.png" alt="" width="47" > -->
+	</div>
+</body>
+</html>
