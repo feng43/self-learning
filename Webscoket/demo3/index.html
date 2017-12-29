@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Websocket</title>
+</head>
+<body>
+	<h1>Chat Room</h1>
+	<input id="sendText" type="text">
+	<button id="sendBtn">发送</button>
+	<script>
+		var websocket = new WebSocket("ws://localhost:8001/");
+		function showMessage(str){
+			var div = document.createElement("div");
+			div.innerHTML = str;
+			document.body.appendChild(div);
+		}
+		websocket.onopen = function() {
+			console.log('websocket open');
+			document.getElementById('sendBtn').onclick = function(){
+				var text = document.getElementById('sendText').value;
+				if(text){
+					websocket.send(text);
+				}
+			}
+		}
+		websocket.onclose = function() {
+			console.log('websocket close');
+		}
+		websocket.onmessage = function(e){
+			console.log(e.data);
+			showMessage(e.data);
+		}
+	</script>
+</body>
+</html>
