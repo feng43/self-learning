@@ -5,20 +5,34 @@
 			<i class="close-icon" v-if="mobile" @click="getTop50Umbrella(currentStage)">×</i>
 			<button class="search-btn" @click="getUmbrellaByMobile">查询积分</button>
 		</div>
-		<div class="add-table-header">
-			<div class="item">姓名</div>
-			<div class="item">排名</div>
-			<div class="item">积分</div>
-		</div>
 		<div class="add-table">
-			<div class="table-row" v-for="item in umbrellaList">
-				<div class="table-cell">{{item.real_name}}</div>
-				<div class="table-cell">{{item.rownum}}</div>
-				<div class="table-cell">
-					<p>{{item.umbrella_total}}</p>
-					<p class="text">{{item.umbrella_update_time}}</p>
-				</div>
-			</div>
+			<el-table
+				v-if="umbrellaList"
+				:data="umbrellaList"
+				style="width: 98%;margin: 0 auto;"
+				height="500"
+				border>
+					<el-table-column
+						prop="rownum"
+						label="排名">
+					</el-table-column>
+					<el-table-column
+						prop="real_name"
+						label="会员">
+					</el-table-column>
+					<el-table-column
+						prop="mobile"
+						label="手机">
+					</el-table-column>
+					<el-table-column
+						prop="umbrella_total"
+						label="分数">
+					</el-table-column>
+					<el-table-column
+						prop="umbrella_update_time"
+						label="日期">
+					</el-table-column>
+			</el-table>
 		</div>
 	</div>
 </template>
@@ -81,16 +95,17 @@
 		padding-top: 10px
 		font-size: 0
 		.add-search
-			width: 95%
-			height: 60px
+			width: 98%
+			height: 70px
 			margin: 0 auto
 			padding: 15px 0px
 			box-sizing: border-box
 			position: relative
+			text-align: left
 			.search-input
-				height: 30px
-				line-height: 30px
-				width: 70%
+				height: 40px
+				line-height: 40px
+				width: 280px
 				padding: 10px 8px
 				margin-right: 7px
 				border: 1px solid #E5E5E5
@@ -103,7 +118,7 @@
 				display: inline-block
 				position: absolute
 				top: 50%
-				right: 115px
+				left: 250px
 				margin: -8px 0
 				color: #000
 				z-index: 9
@@ -113,48 +128,13 @@
 				border-radius: 50%
 				background: rgba(0,0,0,.2)
 			.search-btn
-				width: 25%
-				height: 30px
-				line-height: 30px
+				width: 115px
+				height: 40px
+				line-height: 40px
 				background: #840FDA
 				color: #FFFFFF
 				border: none
 				border-radius: 5px
-		.add-table-header
-			display: flex
-			width: 90%
-			height: 30px
-			line-height: 30px
-			margin: 0 auto
-			border-bottom: 1px solid #840FDA
-			.item
-				flex: 1
-				font-size: 16px
-				color: #333333
-				text-align: center
-				&:first-child
-					text-align: left
-				&:last-child
-					text-align: right
 		.add-table
-			width: 90%
-			height: 50px
-			padding-top: 10px
-			box-sizing: border-box
-			margin: 0 auto
-			.table-row
-				display: flex
-				margin-bottom: 20px
-				.table-cell
-					flex: 1
-					font-size: 15px
-					color: #333333
-					text-align: center
-					&:first-child
-						text-align: left
-					&:last-child
-						text-align: right
-					.text
-						color: #999999
-						font-size: 12px
+			padding-bottom: 150px
 </style>

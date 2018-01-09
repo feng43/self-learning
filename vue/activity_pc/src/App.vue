@@ -46,20 +46,21 @@
 <style lang="stylus" rel="stylesheet/stylus">
   @import "./common/stylus/index.styl"
   .tab
-    display: flex
     width: 100%
-    height: 30px
-    line-height: 30px
-    background: #840FDA
+    height: 60px
+    line-height: 60px
+    background: url("./assets/bg.png")
     .tab-item
-      flex: 1
+      display: inline-block
+      width: 200px
+      height: 100%
       text-align: center
       & > a
         display: block
         font-size: 14px
         color: #FFFFFF
         &.active
-          height: 31px
+          height: 61px
           color: #5400B6
           background: #FFFFFF
 </style>
