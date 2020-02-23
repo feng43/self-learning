@@ -90,6 +90,7 @@ Function.prototype.myCall = function(thisArg) {
   return rs;
 }
 
+
 Function.prototype.myApply = function(thisArg) {
   if(typeof this !== 'function') return;
   var args = [...arguments][1];
@@ -110,7 +111,7 @@ const foo = {
   name: 'foo'
 };
 
-bar.myCall(foo, 1, 2, 3); // foo [1, 2, 3]
+// bar.myCall(foo, 1, 2, 3); // foo [1, 2, 3]
 // bar.myApply(foo, [1, 2, 3]); // foo [1, 2, 3]
 
 // let ary = [1, [2, [3, [4, 5]]], 6];
@@ -124,3 +125,55 @@ bar.myCall(foo, 1, 2, 3); // foo [1, 2, 3]
 // }
 
 // console.log(ary);
+
+
+// 遍历
+const randomNumHandle = (len, randomNum) => {
+  // 快速生成一个有len个元素的巨大数组
+  let originArr = Array.from({ length: len }, (v, i) => i);
+  //存放选取出来的随机数的数组
+  let resultSet = new Set()
+
+  // 快速选取randomNum个元素
+  for (let i = 0; i < randomNum; i++) {
+    let luckDog = Math.floor(Math.random() * (len - 1))
+
+    if (!resultSet.has(originArr[luckDog])) {
+      resultSet.add(originArr[luckDog])
+    } else {
+      i--;
+    }
+  }
+
+  return Array.from(resultSet)
+}
+
+// 递归
+const randomNumHandle2 = (len, randomNum) => {
+  // 快速生成一个有len个元素的巨大数组
+  let originArr = Array.from({ length: len }, (v, i) => i);
+  //存放选取出来的随机数的数组
+  let resultSet = new Set()
+
+  // 快速选取randomNum个元素
+  for (let i = 0; i < randomNum; i++) {
+    addNum();
+  }
+
+  function addNum() {
+    let luckDog = Math.floor(Math.random() * (len - 1))
+
+    if (!resultSet.has(originArr[luckDog])) {
+        resultSet.add(originArr[luckDog])
+    } else {
+        addNum()
+    }
+  }
+
+  return Array.from(resultSet)
+}
+
+// 比如有个数组有100K个元素，从中不重复随机选取10K个元素
+// console.log(randomNumHandle(100000, 10000).length)
+// console.log(randomNumHandle2(100000, 10000).length)
+

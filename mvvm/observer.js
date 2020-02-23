@@ -50,3 +50,4 @@ class Dep {
     this.subs.forEach(item => item.update());
   }
 }
+Dep.target = null;
