@@ -8,15 +8,21 @@ function myNew() {
   return typeof rs === 'object' ? rs : obj;
 }
 
+function myNew2(fn, ...args) {
+  const obj = Object.create(fn.prototype);
+  const rs = fn.apply(obj, args);
+  return typeof rs === 'object' ? rs : obj;
+}
+
 // ========= 无返回值 =============
-// const testNewFun = function(name) {
-//   this.name = name;
-// };
+const testNewFun = function(name) {
+  this.name = name;
+};
 
-// const newObj = myNew(testNewFun, 'foo');
+const newObj = myNew2(testNewFun, 'foo');
 
-// console.log(newObj); // { name: "foo" }
-// console.log(newObj instanceof testNewFun); // true
+console.log(newObj); // { name: "foo" }
+console.log(newObj instanceof testNewFun); // true
 // ========= 有返回值 =============
 // const testNewFun = function(name) {
 //   this.name = name;
@@ -242,7 +248,7 @@ class Promise {
 
 
 // promise链式调用
-class Promise{
+class _Promise{
   constructor(executor) {
     this.state = 'pending';
     this.value = '';
@@ -394,3 +400,36 @@ Promise.all = function(promises){
     };
   });
 }
+
+
+console.log(1);
+   
+setTimeout(() => {
+    console.log(2);
+}, 0);
+
+process.nextTick(() => {
+    console.log(3);
+});
+
+setImmediate(() => {
+    console.log(4);
+});
+
+new Promise((resolve, reject) => {
+    console.log(5);
+    resolve();
+    console.log(6);
+}).then(() => {
+    console.log(7);
+});
+
+Promise.resolve().then(() => {
+    console.log(8);
+
+    process.nextTick(() => {
+        console.log(9);
+    });
+});
+
+// 1, 5, 6, 3, 7, 8, 2, 4
