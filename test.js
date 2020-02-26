@@ -433,3 +433,33 @@ Promise.resolve().then(() => {
 });
 
 // 1, 5, 6, 3, 7, 8, 2, 4
+
+
+
+function clone(obj){
+  if(typeof obj!=='object'){return obj;}
+  let cloneObj = {};
+  switch(obj.constructor){
+    case Array:
+      cloneObj = [];
+    case Object:
+      for(var property in obj){
+        cloneObj[property] = typeof obj[property] === 'object'?clone(obj[property]):obj[property];
+      }
+      break;
+    case Map:
+      cloneObj = new Map();
+      obj.forEach((value,key)=>{
+        cloneObj.set(key,typeof value==='object'?clone(value):value);
+      });
+      break;
+    case Set:
+      cloneObj = new Set();
+      obj.forEach(value=>{
+        cloneObj.add(typeof value==='object'?clone(value):value);
+      });
+      break;
+  }
+  return cloneObj;
+}
+
